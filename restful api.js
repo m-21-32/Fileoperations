@@ -5,7 +5,7 @@ const path = require('path');
 const server = http.createServer((req, res) => {
   if (req.method === 'GET') {
     if (req.url === '/api/v1/users') {
-      // Read the JSON data from a file
+      
       fs.readFile(path.join(__dirname, 'users.json'), 'utf8', (err, data) => {
         if (err) {
           res.writeHead(500, { 'Content-Type': 'text/plain' });
@@ -16,14 +16,14 @@ const server = http.createServer((req, res) => {
         res.end(data);
       });
     } else if (req.url.startsWith('/api/v1/users?')) {
-      // Parse query parameters
+      
       const urlParts = req.url.split('?');
       const query = new URLSearchParams(urlParts[1]);
       const nameFilter = query.get('name');
       const page = parseInt(query.get('page')) || 1;
       const perPage = parseInt(query.get('perPage')) || 10;
 
-      // Read and filter the JSON data
+
       fs.readFile(path.join(__dirname, 'users.json'), 'utf8', (err, data) => {
         if (err) {
           res.writeHead(500, { 'Content-Type': 'text/plain' });
