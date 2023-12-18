@@ -6,9 +6,9 @@ fs.writeFile('example.txt', content, err => {
   if (err) {
     console.error(err);
   }
-  // file written successfully
+  
 });
-// Read a file
+
 fs.readFile('example.txt', 'utf8', (err, data) => {
     if (err) {
         console.error('Error reading the file:', err);
