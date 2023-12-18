@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import CounterApp from './CounterApp';
 
 const App = () => {
-  const [users, setUsers] = useState([]); 
-  const [showAdd, setShowAdd] = useState(false); 
+  const [users, setUsers] = useState([]);
+  const [showAdd, setShowAdd] = useState(false);
 
-  
   useEffect(() => {
     axios.get('http://localhost:3000/api/users')
       .then(response => {
@@ -18,7 +17,6 @@ const App = () => {
   }, []);
 
   const handleRefresh = () => {
-   
     axios.get('http://localhost:3000/api/users')
       .then(response => {
         setUsers(response.data);
@@ -28,29 +26,25 @@ const App = () => {
       });
   };
 
-  
   const handleAddExercise = () => {
-   
     setShowAdd(!showAdd);
   };
 
-
   const handleEditExercise = () => {
-
+    
   };
-
 
   const handleDeleteExercise = () => {
-
+  
   };
-
 
   const renderAddSection = () => {
     if (showAdd) {
       return (
         <div>
-        
           <p>Form for adding exercises goes here</p>
+          {/* Use CounterApp component */}
+          <CounterApp />
         </div>
       );
     }
@@ -67,12 +61,10 @@ const App = () => {
         ))}
       </ul>
 
-    
       <button onClick={handleAddExercise}>Add Exercise</button>
       <button onClick={handleEditExercise}>Edit Exercise</button>
       <button onClick={handleDeleteExercise}>Delete Exercise</button>
 
-      
       {renderAddSection()}
     </div>
   );
