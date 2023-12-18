@@ -63,8 +63,6 @@ app.post('/workouts', [
   }
 });
 
-
-
 // Serve static files from the 'public' directory
 const publicPath = path.join(__dirname, 'public');
 app.use(express.static(publicPath));
